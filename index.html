@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öffnender Umschlag</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .envelope {
+            position: relative;
+            width: 50pc;
+            height: 30pc;
+            background: #ffcc66;
+            border-radius: 10px 10px 5px 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 15pc;
+            background: #ffb347;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out;
+        }
+        .letter {
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 45pc;
+            height: 25pc;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transform: translateY(100%);
+            transition: transform 0.6s ease-in-out 0.3s;
+        }
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+        }
+        .envelope.open .letter {
+            transform: translateX(-2.5pc);
+        }
+
+        .envelope.open + .shadow {
+            opacity: 0;
+        }
+        .letterText{
+            margin-top: 1pc;
+            margin-left: 1pc;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5pc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="flap"></div>
+            <div class="letter">
+                <p class="letterText">
+                    Optionaler Text. <br><br><br>
+                    TEXT-ID: VisualMailText;
+                    <a href="https://docs.google.com/forms/d/1smXC6nmMPb4R86Mi_1dXexlh-8cgJyGIhy">
+                        <button class="UmfrageButton">
+                            Zur Einladung
+                        </button>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openEnvelope() {
+            document.querySelector('.envelope').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
